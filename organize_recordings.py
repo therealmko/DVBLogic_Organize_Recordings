@@ -3,10 +3,11 @@
 # organize_recordings.py, to move recordings to user directories	#
 # Initial version by King on 26-07-2013					#
 # v1.0	King	26-07-2013						#
+# v1.1  King	29-07-2013	Add file permission settings		#
 #									#
 #########################################################################
 
-from os import listdir
+from os import listdir, chmod
 from os.path import isfile, join
 import shutil
 
@@ -24,6 +25,7 @@ for line in lines:
 	
 	for myPersonalRec in myRecFiles:
 		shutil.move(myPersonalRec, vals[0])
+		chmod(vals[0] + "/" + myPersonalRec, 0777)
 		listdir(myPath)
 
 f.close()
